@@ -1,0 +1,60 @@
+/* :where() = zero specificity, so a consumer's overrides always win regardless of import order */
+:where(:root) {
+  --hd-ink: #22252a;
+  --hd-paper: #ffffff;
+  --hd-paper-2: #f3efe0;
+  --hd-accent: #ff6b6b;
+  --hd-accent-2: #4ecdc4;
+  --hd-highlight: #ffe066;
+  --hd-shadow: rgba(0, 0, 0, 0.35);
+}
+
+
+:where(:root) {
+  --hd-font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --hd-font-text: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :where(:root:not([data-hd-theme="light"])) {
+    --hd-ink: #f5f5f0;
+    --hd-paper: #242830;
+    --hd-paper-2: #323744;
+    --hd-accent: #ff7b7b;
+    --hd-accent-2: #5ce1e6;
+    --hd-highlight: #ffd84d;
+  }
+}
+:where([data-hd-theme="dark"]) {
+  --hd-ink: #f5f5f0;
+  --hd-paper: #242830;
+  --hd-paper-2: #323744;
+}
+
+/* Patterns ship with the lib, so nothing depends on your site's global SCSS */
+.hd-pattern-grid {
+  background-size: 12px 12px;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--hd-ink) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--hd-ink) 18%, transparent) 1px, transparent 1px);
+}
+.hd-pattern-dots-wide {
+  background-image: radial-gradient(color-mix(in srgb, var(--hd-ink) 35%, transparent) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap");
+
+.handdrawn-font {
+  font-family: "Covered By Your Grace", monospace;
+  font-weight: 400; 
+  line-height: 1.15;
+}
+
+.handdrawn-font--xs   { font-size: 1rem; }
+.handdrawn-font--sm   { font-size: 1.4rem; }
+.handdrawn-font--md   { font-size: 2rem; }
+.handdrawn-font--lg   { font-size: 3rem; }
+.handdrawn-font--xl   { font-size: clamp(3.5rem, 8vw, 6rem); }
+.handdrawn-font--huge { font-size: clamp(5rem, 16vw, 12rem); line-height: 1; }

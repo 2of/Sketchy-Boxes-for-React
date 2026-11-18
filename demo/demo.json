@@ -1,0 +1,258 @@
+{
+  "pkg": "@yourname/hand-drawn",
+
+  "hero": {
+    "title": "Hand drawn",
+    "intro": "Wobbly, hand-drawn React containers, notes and headers. Everything below is themed through --hd-* CSS variables, so try the theme button."
+  },
+
+  "toolbar": {
+    "reroll": "Re-roll wobble",
+    "theme": "Theme: {mode}",
+    "replay": "Replay",
+    "copy": "copy",
+    "copied": "copied ✓",
+    "copyAria": "Copy code",
+    "none": "none"
+  },
+
+  "bodies": {
+    "default": {
+      "title": "Sample note",
+      "text": "Wobbly outline, hand-placed tilt, same seed every render."
+    },
+    "playground": { "title": "Play with me", "text": "Hover this card to see the effect." },
+    "paper": { "text": "Lines and patterns follow the theme colours." },
+    "solid": { "title": "Solid fill" },
+    "tinted": { "title": "Tinted fill" },
+    "taped": { "title": "Taped", "text": "Tape angle is seeded too." },
+    "cornerTape": { "title": "Corner tape" },
+    "pinned": { "title": "Pinned" },
+    "hover": { "text": "Hover me." },
+    "floating": { "title": "Floating" },
+    "swaying": { "title": "Swaying on a pin" },
+    "drawIn": { "title": "Draws itself in" },
+    "calm": { "title": "Calm" },
+    "chaotic": { "title": "Chaotic" },
+    "fixedTilt": { "title": "Fixed tilt" }
+  },
+
+  "plain": {
+    "custom": "Custom colour",
+    "boil": "Always wiggling"
+  },
+
+  "sections": {
+    "howToUse": {
+      "title": "How to use",
+      "note": "Install, import the CSS once, then use the components. Theming is plain CSS variables.",
+      "propsTitle": "Props at a glance",
+      "propsHead": { "prop": "Prop", "what": "What it does", "values": "Values" }
+    },
+
+    "playground": {
+      "title": "Playground",
+      "note": "Mix a preset with hover, entrance and idle motion. Changing a dropdown remounts the card so entrances replay.",
+      "fields": {
+        "preset": "preset",
+        "hover": "hover",
+        "enter": "enter",
+        "idle": "idle",
+        "boil": "boil"
+      }
+    },
+
+    "headers": {
+      "title": "Headers",
+      "note": "Hover the ones with animate=\"hover\" to watch them redraw.",
+      "samples": {
+        "big": { "label": "as=\"h1\" underline=\"squiggle\"", "text": "Big title" },
+        "highlighted": { "label": "as=\"h2\" size=\"lg\" highlight", "text": "Highlighted" },
+        "hover": { "label": "animate=\"hover\"", "text": "Hover me" },
+        "drawIn": { "label": "drawIn", "text": "Draws itself in" },
+        "plain": { "label": "as=\"h3\" no underline", "text": "Plain section label" },
+        "small": { "label": "as=\"h4\"", "text": "Small heading" }
+      }
+    },
+
+    "presets": {
+      "title": "Presets",
+      "note": "Every key in SKETCH_PRESETS, rendered from the object itself, so new presets appear automatically.",
+      "label": "preset=\"{name}\""
+    },
+
+    "paper": {
+      "title": "Paper",
+      "note": "The paper prop sets the sheet behind a card. Use paper=\"none\" for no sheet.",
+      "label": "paper=\"{name}\""
+    },
+
+    "fills": {
+      "title": "Fills",
+      "note": "backgroundColor takes a token name or any CSS colour. isTransparent turns the fill into a light tint.",
+      "solidLabel": "backgroundColor=\"{value}\"",
+      "tintedLabel": "backgroundColor=\"{value}\" isTransparent",
+      "customLabel": "backgroundColor=\"#c9e4ff\" (custom CSS)"
+    },
+
+    "tapePins": {
+      "title": "Tape and pins",
+      "note": "Colours come from the same tokens, so they follow the theme.",
+      "tapeTopLabel": "tape=\"top\" tapeColor=\"{value}\"",
+      "tapeCornersLabel": "tape=\"corners\" tapeColor=\"{value}\"",
+      "pinLabel": "pin=\"top\" pinColor=\"{value}\""
+    },
+
+    "hover": {
+      "title": "Hover effects",
+      "note": "The outline also redraws on hover when animate=\"hover\" is set. Combine both for the full effect.",
+      "label": "hover=\"{name}\" animate=\"hover\""
+    },
+
+    "entrances": {
+      "title": "Entrances",
+      "note": "Play once when the card mounts, staggered with enterDelay.",
+      "label": "enter=\"{name}\" enterDelay={{delay}}"
+    },
+
+    "idle": {
+      "title": "Idle motion",
+      "note": "Slow loops for things that should feel alive. Use sparingly on a busy page.",
+      "floatLabel": "idle=\"float\"",
+      "swayLabel": "idle=\"sway\"",
+      "boilLabel": "animate=\"boil\"",
+      "drawInLabel": "drawIn drawDuration={1.4}"
+    },
+
+    "wobble": {
+      "title": "Wobble tuning",
+      "note": "roughness, passes and tilt pass straight through to the container.",
+      "calmLabel": "roughness={1} passes={1}",
+      "chaoticLabel": "roughness={6} passes={3}",
+      "tiltLabel": "tilt={-4}"
+    }
+  },
+
+  "snippets": {
+    "install": ["npm install {pkg}"],
+
+    "css": [
+      "// main.jsx, or app/layout.jsx in Next.js. Import once.",
+      "import \"{pkg}/style.css\";"
+    ],
+
+    "use": [
+      "import { SketchOutline, HandDrawnHeader } from \"{pkg}\";",
+      "",
+      "export default function Card() {",
+      "  return (",
+      "    <SketchOutline preset=\"pinned\" paper=\"lined\" hover=\"lift\" seed={3}>",
+      "      <HandDrawnHeader as=\"h2\" underline=\"squiggle\">Hello</HandDrawnHeader>",
+      "      <p>Wobbly outline, hand-placed tilt.</p>",
+      "    </SketchOutline>",
+      "  );",
+      "}"
+    ],
+
+    "motion": [
+      "<SketchOutline",
+      "  preset=\"taped\"",
+      "  enter=\"pop\"          // pop | rise | drop",
+      "  enterDelay={120}     // ms, for staggering",
+      "  hover=\"lift\"         // lift | press | grow | tilt | wiggle",
+      "  animate=\"hover\"      // outline redraws on hover (\"boil\" = always)",
+      "/>"
+    ],
+
+    "theme": [
+      "/* Any CSS file. Import order doesn't matter. */",
+      ":root {",
+      "  --hd-ink: #1b1b1f;",
+      "  --hd-paper: #fffaf0;",
+      "  --hd-accent: hotpink;",
+      "}",
+      "",
+      "/* Or map your own design system onto the lib */",
+      ":root {",
+      "  --hd-ink: var(--brand-text);",
+      "  --hd-accent: var(--brand-primary);",
+      "}",
+      "",
+      "/* Or scope it to one section */",
+      ".pricing { --hd-paper: #111; --hd-ink: #eee; }"
+    ],
+
+    "dark": [
+      "<html data-hd-theme=\"dark\">   <!-- or \"light\". No attribute = follow the OS -->"
+    ],
+
+    "fonts": [
+      "/* Point the font tokens at whatever fonts you load */",
+      ":root {",
+      "  --hd-font-display: \"Fraunces\", Georgia, serif;",
+      "  --hd-font-text: \"Hanken Grotesk\", system-ui, sans-serif;",
+      "}"
+    ]
+  },
+
+  "steps": [
+    {
+      "title": "Install",
+      "blocks": [{ "code": "install" }]
+    },
+    {
+      "title": "Import the stylesheet once",
+      "blocks": [
+        { "text": "It holds the theme variables, patterns and motion classes." },
+        { "code": "css" }
+      ]
+    },
+    {
+      "title": "Use the components",
+      "blocks": [
+        { "text": "It looks right with no setup. Pass a `seed` to keep the wobble stable between renders." },
+        { "code": "use" }
+      ]
+    },
+    {
+      "title": "Add motion",
+      "blocks": [
+        { "code": "motion" },
+        { "text": "Use either `enter` or `idle` on one card, not both. Everything respects prefers-reduced-motion." }
+      ]
+    },
+    {
+      "title": "Theme it",
+      "blocks": [
+        { "text": "The lib only reads `--hd-*` variables: `ink`, `paper`, `paper-2`, `accent`, `accent-2`, `highlight` and `shadow`. Try the theme button above to see them switch." },
+        { "code": "theme" },
+        { "code": "dark" }
+      ]
+    },
+    {
+      "title": "Fonts (optional)",
+      "blocks": [
+        { "text": "The lib never downloads fonts. Load your own, then point the two tokens at them." },
+        { "code": "fonts" }
+      ]
+    }
+  ],
+
+  "props": [
+    { "name": "preset", "what": "Starting look. Any key of SKETCH_PRESETS.", "values": "sticker, pinned, taped, note..." },
+    { "name": "paper", "what": "Sheet behind the card.", "values": "lined, grid, dotted, plain, aged, none" },
+    { "name": "pattern", "what": "Texture overlay (a CSS class name).", "values": "any pattern class, or none" },
+    { "name": "backgroundColor", "what": "Fill drawn inside the outline.", "values": "token name or any CSS colour" },
+    { "name": "isTransparent", "what": "Turns the fill into a light tint.", "values": "true | false" },
+    { "name": "tape / tapeColor", "what": "Tape strips and their colour.", "values": "top | corners, token or colour" },
+    { "name": "pin / pinColor", "what": "Push pin and its colour.", "values": "top, token or colour" },
+    { "name": "hover", "what": "Card motion on hover.", "values": "lift, press, grow, tilt, wiggle, none" },
+    { "name": "enter / enterDelay", "what": "Entrance animation and its delay in ms.", "values": "pop, rise, drop" },
+    { "name": "idle", "what": "Slow looping motion.", "values": "float, sway" },
+    { "name": "animate", "what": "Outline redraw behaviour.", "values": "none, hover, boil" },
+    { "name": "drawIn", "what": "Outline draws itself in on mount.", "values": "true | false" },
+    { "name": "roughness / passes", "what": "How wobbly, and how many strokes.", "values": "numbers (about 1 to 6, and 1 to 4)" },
+    { "name": "tilt", "what": "Rotation in degrees.", "values": "auto or a number" },
+    { "name": "seed", "what": "Fixes the wobble so it is the same every render.", "values": "any number" }
+  ]
+}
