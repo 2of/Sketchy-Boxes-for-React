@@ -4,7 +4,7 @@
 
 Wobbly, hand-drawn React containers, notes and headers. Everything is themed through `--hd-*` CSS variables.
 
-![sample](./ss.png)
+![sample](./demo.gif)
 
 
 ---
